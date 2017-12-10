@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class MolarMass {
 
     public static int of(String c) {
-        ArrayList<IFormula> formulas = FormulaBuilder.buildFormulas(c);
+        ArrayList<IFormula> formulas = FormulaCreator.createFormulas(c);
         return formulas.stream().mapToInt(formula -> formula.mass()).sum();
     }
 }

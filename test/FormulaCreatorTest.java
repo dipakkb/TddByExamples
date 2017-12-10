@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class FormulaBuilderTest {
+public class FormulaCreatorTest {
 
     @Test
     public void shouldBuildSimpleFormulaForHydrogen() {
-        ArrayList<IFormula> simpleFormula = FormulaBuilder.buildFormulas("H");
+        ArrayList<IFormula> simpleFormula = FormulaCreator.createFormulas("H");
         assertEquals(new SimpleFormula(1, "H"), simpleFormula.get(0));
     }
 
     @Test
     public void shouldBuildSimpleFormulasForWater() {
-        ArrayList<IFormula> simpleFormula = FormulaBuilder.buildFormulas("H2O");
+        ArrayList<IFormula> simpleFormula = FormulaCreator.createFormulas("H2O");
         assertEquals(new SimpleFormula(2, "H"), simpleFormula.get(0));
         assertEquals(new SimpleFormula(1, "O"), simpleFormula.get(1));
     }
@@ -25,7 +25,7 @@ public class FormulaBuilderTest {
         simpleFormulas.add(new SimpleFormula(1, "P"));
         simpleFormulas.add(new SimpleFormula(4, "O"));
 
-        ArrayList<IFormula> simpleFormula = FormulaBuilder.buildFormulas("Ca3(PO4)2");
+        ArrayList<IFormula> simpleFormula = FormulaCreator.createFormulas("Ca3(PO4)2");
 
         assertEquals(new SimpleFormula(3, "Ca"), simpleFormula.get(0));
         assertEquals(new CompoundFormula(2, simpleFormulas), simpleFormula.get(1));
@@ -44,7 +44,7 @@ public class FormulaBuilderTest {
         ferriCynaide.add(compundCynaide);
         CompoundFormula compoundFerriCyanide = new CompoundFormula(2, ferriCynaide);
 
-        ArrayList<IFormula> simpleFormula = FormulaBuilder.buildFormulas("Co3(Fe(CN)6)2");
+        ArrayList<IFormula> simpleFormula = FormulaCreator.createFormulas("Co3(Fe(CN)6)2");
 
         assertEquals(new SimpleFormula(3, "Co"), simpleFormula.get(0));
         assertEquals(compoundFerriCyanide, simpleFormula.get(1));
